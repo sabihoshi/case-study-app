@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     },
     error: {
         borderColor: 'red',
-        borderWidth: 1,
+        borderWidth: 1
     }
 });
 
