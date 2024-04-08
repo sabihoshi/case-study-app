@@ -1,8 +1,7 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Switch } from 'react-native';
 
 import React, { useState } from 'react';
 import { Text, View } from '@/components/Themed';
-import { Switch } from 'tamagui'
 
 interface NotificationsState {
     allNotifications: boolean;
@@ -65,11 +64,10 @@ const NotificationSwitches: React.FC = () => {
             <View style={styles.switchContainer}>
                 <Text style={styles.switchLabel}>All Notifications</Text>
                 <Switch
-                    onCheckedChange={handleAllNotificationsToggle}
-                    checked={notifications.allNotifications}
-                >
-                    <Switch.Thumb animation='quick'/>
-                </Switch>
+                    trackColor={{false: '#ededed', true: '#00b4e6'}}
+                    onValueChange={handleAllNotificationsToggle}
+                    value={notifications.allNotifications}
+                />
             </View>
             <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)"/>
             {(Object.keys(notifications) as Array<keyof NotificationsState>)
@@ -79,10 +77,9 @@ const NotificationSwitches: React.FC = () => {
                         <View style={styles.switchContainer}>
                             <Text style={styles.switchLabel}>{notificationLabels[key]}</Text>
                             <Switch
-                                onCheckedChange={() => handleSingleNotificationToggle(key)}
-                                checked={notifications[key]}>
-                                <Switch.Thumb animation='quick'/>
-                            </Switch>
+                                trackColor={{false: '#ededed', true: '#00b4e6'}}
+                                onValueChange={() => handleSingleNotificationToggle(key)}
+                                value={notifications[key]}/>
                         </View>
                         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)"/>
                     </View>
