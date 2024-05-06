@@ -1,7 +1,7 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import PushNotificationSettings from "@/components/PushNotificationSettings";
 import React from "react";
-import { View } from "@/components/Themed";
+import {View} from "@/components/Themed";
 
 export default function TabOneScreen() {
     return (

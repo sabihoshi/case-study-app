@@ -60,52 +60,33 @@ const NotificationSwitches: React.FC = () => {
     };
 
     return (
-        <View>
-            <View style={styles.switchContainer}>
-                <Text style={styles.switchLabel}>All Notifications</Text>
+        <View className="space-y-2 mx-6">
+            <View className="flex-row justify-between items-center w-full px-2.5 my-1.5">
+                <Text className="text-lg font-bold">All Notifications</Text>
                 <Switch
                     trackColor={{false: '#ededed', true: '#00b4e6'}}
                     onValueChange={handleAllNotificationsToggle}
                     value={notifications.allNotifications}
                 />
             </View>
-            <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)"/>
+            <View className="px-5 my-2.5 h-px bg-gray-200 dark:bg-white opacity-10"/>
             {(Object.keys(notifications) as Array<keyof NotificationsState>)
                 .filter(key => key !== 'allNotifications')
                 .map((key) => (
-                    <View key={key} style={{width: '100%'}}>
-                        <View style={styles.switchContainer}>
-                            <Text style={styles.switchLabel}>{notificationLabels[key]}</Text>
+                    <View key={key} className="w-full">
+                        <View className="flex-row justify-between items-center w-full px-2.5 my-1.5">
+                            <Text className="text-lg font-bold">{notificationLabels[key]}</Text>
                             <Switch
-                                trackColor={{false: '#ededed', true: '#00b4e6'}}
+                                trackColor={{false: '#25a5d0', true: '#25a5d0'}}
                                 onValueChange={() => handleSingleNotificationToggle(key)}
-                                value={notifications[key]}/>
+                                value={notifications[key]}
+                            />
                         </View>
-                        <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)"/>
+                        <View className="px-5 my-2.5 h-px bg-gray-200 dark:bg-white opacity-10"/>
                     </View>
                 ))}
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    switchContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: '100%',
-        paddingHorizontal: 20,
-        marginVertical: 5
-    },
-    separator: {
-        paddingHorizontal: 20,
-        marginVertical: 9,
-        height: 1
-    },
-    switchLabel: {
-        fontSize: 16,
-        fontWeight: 'bold'
-    }
-});
 
 export default NotificationSwitches;
